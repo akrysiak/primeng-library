@@ -1,0 +1,19 @@
+<div
+  class="layout-sidebar"
+  (mouseenter)="onMouseEnter()"
+  (mouseleave)="onMouseLeave()"
+>
+  <a [routerLink]="['/books']" class="app-logo"
+    ><h5 style="color: #3b82f6">My Library</h5>
+
+    <button
+      class="layout-sidebar-anchor p-link"
+      type="button"
+      (click)="anchor()"
+    ></button>
+  </a>
+
+  <div class="layout-menu-container">
+    <app-menu></app-menu>
+  </div>
+</div>

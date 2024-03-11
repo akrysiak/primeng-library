@@ -1,0 +1,31 @@
+<div class="grid">
+  <div class="col-12">
+    <form [formGroup]="shelfForm" (ngSubmit)="onSubmit()">
+      <div class="card p-fluid">
+        <h5>{{ editMode ? "Edit Shelf" : "Add Shelf" }}</h5>
+        <div class="field">
+          <label htmlFor="name">Number</label>
+          <input pInputText id="name" formControlName="name" type="text" />
+        </div>
+        <div class="flex gap-2">
+          <button
+            pButton
+            type="button"
+            label="Save"
+            (click)="onSubmit()"
+            class="p-button-success"
+            [routerLink]="['/shelves']"
+            [disabled]="!shelfForm.valid"
+          ></button>
+          <button
+            pButton
+            label="Cancel"
+            [routerLink]="['/shelves']"
+            class="p-button-danger"
+            (click)="onCancel()"
+          ></button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

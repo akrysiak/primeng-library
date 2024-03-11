@@ -1,0 +1,44 @@
+<div class="gris justify-content-center">
+  <div *ngIf="error">
+    <p-messages [(value)]="error" [enableService]="false"></p-messages>
+  </div>
+  <div class="flex col-12 justify-content-center">
+    <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+      <div class="card p-fluid">
+        <h5>{{ isLoginMode ? "Login" : "Sign Up" }}</h5>
+        <div class="field">
+          <label htmlFor="email">Email</label>
+          <input
+            pInputText
+            id="email"
+            type="text"
+            ngModel
+            name="email"
+            required
+            email
+          />
+        </div>
+        <div class="field">
+          <label htmlFor="password">Password</label>
+          <input
+            pInputText
+            id="password"
+            type="password"
+            ngModel
+            name="password"
+            required
+            minlength="6"
+          />
+        </div>
+        <div class="flex gap-2">
+          <button pButton type="submit" [disabled]="!authForm.valid">
+            {{ isLoginMode ? "Login" : "Sign Up" }}
+          </button>
+          <button pButton (click)="onSwitchMode()" type="button">
+            Switch to {{ isLoginMode ? "Sign Up" : "Login" }}
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

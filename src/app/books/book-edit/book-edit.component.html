@@ -1,0 +1,57 @@
+<div class="grid">
+  <div class="col-12">
+    <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+      <div class="card p-fluid">
+        <h5>{{ editMode ? "Edit Book" : "Add Book" }}</h5>
+        <div class="field">
+          <label htmlFor="title">Title</label>
+          <input pInputText id="title" formControlName="title" type="text" />
+        </div>
+        <div class="field">
+          <label htmlFor="author">Author</label>
+          <p-autoComplete
+            [(ngModel)]="pickedAuthor"
+            [suggestions]="filteredAuthors"
+            (completeMethod)="filterAuthor($event)"
+            field="fullName"
+            [dropdown]="true"
+            formControlName="author"
+            (onSelect)="filterAuthor($event)"
+          ></p-autoComplete>
+        </div>
+        <div class="field">
+          <label htmlFor="isbn">ISBN</label>
+          <input pInputText id="isbn" formControlName="isbn" type="text" />
+        </div>
+        <div class="field">
+          <label htmlFor="shelf">Shelf</label>
+          <p-autoComplete
+            [(ngModel)]="pickedShelf"
+            [suggestions]="filteredShelves"
+            (completeMethod)="filterShelf($event)"
+            field="name"
+            [dropdown]="true"
+            formControlName="shelf"
+          ></p-autoComplete>
+        </div>
+        <div class="flex gap-2">
+          <button
+            pButton
+            label="Save"
+            class="p-button-success"
+            (click)="onSubmit()"
+            [routerLink]="['/books']"
+            [disabled]="!bookForm.valid"
+          ></button>
+          <button
+            pButton
+            label="Cancel"
+            [routerLink]="['/books']"
+            class="p-button-danger"
+            (click)="onCancel()"
+          ></button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

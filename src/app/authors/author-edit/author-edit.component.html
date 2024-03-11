@@ -1,0 +1,43 @@
+<div class="grid">
+  <div class="col-12">
+    <form [formGroup]="authorForm" (ngSubmit)="onSubmit()">
+      <div class="card p-fluid">
+        <h5>{{ editMode ? "Edit Author" : "Add Author" }}</h5>
+        <div class="field">
+          <label htmlFor="name">Name</label>
+          <input pInputText id="name" formControlName="name" type="text" />
+        </div>
+        <div class="field">
+          <label htmlFor="surname">Surname</label>
+          <input
+            pInputText
+            id="surname"
+            formControlName="surname"
+            type="text"
+          />
+        </div>
+        <div class="field">
+          <label htmlFor="year">Birth Year</label>
+          <input pInputText id="year" formControlName="year" type="text" />
+        </div>
+        <div class="flex gap-2">
+          <button
+            pButton
+            label="Save"
+            class="p-button-success"
+            (click)="onSubmit()"
+            [routerLink]="['/authors']"
+            [disabled]="!authorForm.valid"
+          ></button>
+          <button
+            pButton
+            label="Cancel"
+            [routerLink]="['/authors']"
+            class="p-button-danger"
+            (click)="onCancel()"
+          ></button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<div class="grid">
+  <div class="col-12">
+    <div class="card p-fluid">
+      <div class="grid p-2">
+        <h5>Lend a book</h5>
+      </div>
+      <div class="grid p-2 gap-3 align-items-center">
+        <div class="field">
+          <label htmlFor="card"><strong>Card</strong></label>
+          <input
+            pInputText
+            id="card"
+            [(ngModel)]="cardNumber"
+            placeholder="Reader's card number"
+          />
+        </div>
+        <div class="grid align-self-center">
+          <label>&nbsp;</label>
+          <button
+            pButton
+            type="button"
+            label="Search"
+            (click)="onSearch()"
+          ></button>
+        </div>
+      </div>
+      <div class="field">
+        <p *ngIf="selectedReader">
+          <strong>Reader: </strong>{{ selectedReader.name }}
+          {{ selectedReader.surname }}
+        </p>
+      </div>
+      <div class="flex gap-2">
+        <button
+          pButton
+          label="Save"
+          [routerLink]="['/books']"
+          class="p-button-success"
+          (click)="onSubmit()"
+        ></button>
+        <button
+          pButton
+          label="Cancel"
+          [routerLink]="['/books']"
+          class="p-button-danger"
+        ></button>
+      </div>
+    </div>
+  </div>
+</div>

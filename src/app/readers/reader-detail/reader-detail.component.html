@@ -1,0 +1,12 @@
+<div class="card w-20rem">
+  <h5>Reader</h5>
+  <p><strong>Name : </strong>{{ selectedReader.name }}</p>
+  <p><strong>Surname: </strong>{{ selectedReader.surname }}</p>
+  <p><strong>Books Borrowed: </strong></p>
+  <ul>
+    <li *ngFor="let book of books">
+      <i class="pi pi-circle-fill" style="color: slateblue"></i>
+      {{ book.title }}
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,73 @@
+<div class="flex align-items-start">
+  <div class="card my-5 relative">
+    <h5>Readers</h5>
+    <p-table
+      [value]="readers"
+      [rowHover]="true"
+      [columns]="cols"
+      selectionMode="single"
+      styleClass="p-datatable-gridlines"
+      responsiveLayout="scroll"
+    >
+      <ng-template pTemplate="caption">
+        <div class="flex justify-content-between flex-column sm:flex-row">
+          <button
+            pButton
+            label="New Reader"
+            class="p-button-outlined mb-2"
+            icon="pi pi-plus"
+            (click)="onNewReader()"
+          ></button>
+          <div *ngIf="selectedReader" class="flex gap-3">
+            <button
+              pButton
+              pRipple
+              type="button"
+              icon="pi pi-pencil"
+              class="p-button-outlined"
+              (click)="onEditReader()"
+            ></button>
+            <button
+              pButton
+              pRipple
+              type="button"
+              icon="pi pi-times"
+              class="p-button-danger p-button-outlined"
+              (click)="onDelete()"
+            ></button>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="min-width: 12rem">
+            <div class="flex justify-content-between align-items-center">
+              Name
+            </div>
+          </th>
+          <th style="min-width: 12rem">
+            <div class="flex justify-content-between align-items-center">
+              Surname
+            </div>
+          </th>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="body" let-reader let-i="rowIndex">
+        <tr
+          [pSelectableRow]="reader"
+          [routerLink]="[i]"
+          (click)="onSelect(i, reader)"
+        >
+          <td>
+            {{ reader.name }}
+          </td>
+          <td>
+            {{ reader.surname }}
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  <div class="m-5"><router-outlet></router-outlet></div>
+</div>
