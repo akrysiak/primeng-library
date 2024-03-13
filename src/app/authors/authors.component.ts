@@ -51,7 +51,12 @@ export class AuthorsComponent implements OnInit {
       .select('books')
       .pipe(map((booksState) => booksState.books))
       .subscribe((books: Book[]) => {
-        if (books.some((book) => book.author.id == this.selectedAuthor.id)) {
+        if (
+          books.some(
+            (book) =>
+              this.selectedAuthor && book.author.id == this.selectedAuthor.id
+          )
+        ) {
           this.canDeleteAuthor = true;
         }
       });
@@ -68,5 +73,7 @@ export class AuthorsComponent implements OnInit {
   onDelete() {
     this.store.dispatch(new AuthorsActions.DeleteAuthor(this.id));
     this.store.dispatch(new AuthorsActions.StoreAuthors());
+    this.selectedAuthor = null;
+    this.router.navigate(['authors']);
   }
 }

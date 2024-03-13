@@ -104,11 +104,11 @@ export class ReaderEditComponent implements OnInit {
     } else {
       this.store.dispatch(new ReadersActions.AddReader(newReader));
     }
-    this.onCancel();
     this.store.dispatch(new ReadersActions.StoreReaders());
+    this.onCancel();
   }
 
   onCancel() {
-    this.router.navigate(['../'], { relativeTo: this.route });
+    this.router.navigate(['../..'], { relativeTo: this.route });
   }
 }

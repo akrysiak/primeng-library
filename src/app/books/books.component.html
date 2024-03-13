@@ -3,11 +3,9 @@
     <h5>Books</h5>
     <p-table
       [value]="books"
-      [rowHover]="true"
-      [columns]="cols"
       selectionMode="single"
       styleClass="p-datatable-gridlines"
-      responsiveLayout="scroll"
+      responsiveLayout="stack"
     >
       <ng-template pTemplate="caption">
         <div class="flex justify-content-between flex-column sm:flex-row">
@@ -117,5 +115,3 @@
   </div>
   <div class="m-5"><router-outlet></router-outlet></div>
 </div>
-
-<!-- [value]="(books | async).books"  -->

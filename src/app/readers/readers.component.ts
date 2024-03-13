@@ -75,6 +75,8 @@ export class ReadersComponent implements OnInit, OnDestroy {
   onDelete() {
     this.store.dispatch(new ReadersActions.DeleteReader(this.id));
     this.store.dispatch(new ReadersActions.StoreReaders());
+    this.selectedReader = null;
+    this.router.navigate(['readers']);
   }
 
   ngOnDestroy(): void {

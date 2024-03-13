@@ -107,11 +107,11 @@ export class AuthorEditComponent implements OnInit {
     } else {
       this.store.dispatch(new AuthorsActions.AddAuthor(newAuthor));
     }
-    this.onCancel();
     this.store.dispatch(new AuthorsActions.StoreAuthors());
+    this.onCancel();
   }
 
   onCancel() {
-    this.router.navigate(['../'], { relativeTo: this.route });
+    this.router.navigate(['../..'], { relativeTo: this.route });
   }
 }

@@ -22,6 +22,7 @@
             <button
               pButton
               pRipple
+              label="Edit"
               type="button"
               icon="pi pi-pencil"
               class="p-button-outlined"
@@ -30,6 +31,7 @@
             <button
               pButton
               pRipple
+              label="Delete"
               type="button"
               icon="pi pi-times"
               class="p-button-danger p-button-outlined"
@@ -50,6 +52,11 @@
               Surname
             </div>
           </th>
+          <th style="min-width: 12rem">
+            <div class="flex justify-content-between align-items-center">
+              Card number
+            </div>
+          </th>
         </tr>
       </ng-template>
 
@@ -64,6 +71,9 @@
           </td>
           <td>
             {{ reader.surname }}
+          </td>
+          <td>
+            {{ reader.id }}
           </td>
         </tr>
       </ng-template>

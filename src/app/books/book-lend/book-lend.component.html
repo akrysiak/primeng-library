@@ -37,6 +37,7 @@
           [routerLink]="['/books']"
           class="p-button-success"
           (click)="onSubmit()"
+          [disabled]="this.selectedReader == null"
         ></button>
         <button
           pButton

@@ -55,8 +55,12 @@ export class BooksComponent implements OnInit, OnDestroy {
   }
 
   onSelect(i, book) {
-    this.selectedBook = book;
-    this.id = i;
+    if (this.selectedBook && !book) {
+      this.selectedBook = null;
+    } else {
+      this.selectedBook = book;
+      this.id = i;
+    }
   }
 
   onNewBook() {
@@ -65,6 +69,7 @@ export class BooksComponent implements OnInit, OnDestroy {
 
   onEditBook() {
     this.router.navigate(['./', this.id, 'edit'], { relativeTo: this.route });
+    this.selectedBook = null;
   }
 
   onLend() {
@@ -87,6 +92,8 @@ export class BooksComponent implements OnInit, OnDestroy {
   onDelete() {
     this.store.dispatch(new BooksActions.DeleteBook(this.id));
     this.store.dispatch(new BooksActions.StoreBooks());
+    this.selectedBook = null;
+    this.router.navigate(['books']);
   }
   ngOnDestroy(): void {
     this.subscription.unsubscribe();

@@ -172,7 +172,6 @@ export class BookEditComponent implements OnInit {
   }
 
   filterAuthor(event) {
-    // NAPRAWIONE - author.name zamiast author.fullName był <FACEPALM>
     if (event.query != undefined) {
       let filtered: any[] = [];
       let query = event.query;
@@ -203,6 +202,6 @@ export class BookEditComponent implements OnInit {
   }
 
   onCancel() {
-    this.router.navigate(['../'], { relativeTo: this.route });
+    this.router.navigate(['../..'], { relativeTo: this.route });
   }
 }

@@ -95,11 +95,11 @@ export class ShelfEditComponent implements OnInit {
     } else {
       this.store.dispatch(new ShelvesActions.AddShelf(newShelf));
     }
-    this.onCancel();
     this.store.dispatch(new ShelvesActions.StoreShelves());
+    this.onCancel();
   }
 
   onCancel() {
-    this.router.navigate(['../'], { relativeTo: this.route });
+    this.router.navigate(['../..'], { relativeTo: this.route });
   }
 }

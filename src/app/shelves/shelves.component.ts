@@ -7,6 +7,7 @@ import * as fromApp from '../store/app.reducer';
 import * as ShelvesActions from '../shelves/shelf-store/shelf.actions';
 import * as BooksActions from '../books/book-store/book.actions';
 import { Store } from '@ngrx/store';
+import copy from 'fast-copy';
 
 @Component({
   selector: 'app-shelves',
@@ -60,6 +61,7 @@ export class ShelvesComponent implements OnInit, OnDestroy {
   }
 
   onEditShelf() {
+    this.selectedShelf = null;
     this.router.navigate(['./', this.id, 'edit'], { relativeTo: this.route });
   }
 
@@ -88,9 +90,9 @@ export class ShelvesComponent implements OnInit, OnDestroy {
         .select('books')
         .pipe(map((booksState) => booksState.books))
         .subscribe((books: Book[]) => {
-          this.books = books;
+          this.books = copy(books);
           let selectedBooks = [];
-          books.forEach((book) => {
+          this.books.forEach((book) => {
             if (book.shelf.id == shelf.id) {
               selectedBooks.push(book);
             }
