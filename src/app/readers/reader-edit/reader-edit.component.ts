@@ -101,11 +101,12 @@ export class ReaderEditComponent implements OnInit {
       });
 
       this.store.dispatch(new BooksActions.StoreBooks());
+      this.onCancel();
     } else {
       this.store.dispatch(new ReadersActions.AddReader(newReader));
+      this.router.navigate(['readers']);
     }
     this.store.dispatch(new ReadersActions.StoreReaders());
-    this.onCancel();
   }
 
   onCancel() {

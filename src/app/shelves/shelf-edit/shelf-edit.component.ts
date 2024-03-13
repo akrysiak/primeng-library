@@ -92,11 +92,12 @@ export class ShelfEditComponent implements OnInit {
         }
       });
       this.store.dispatch(new BooksActions.StoreBooks());
+      this.onCancel();
     } else {
       this.store.dispatch(new ShelvesActions.AddShelf(newShelf));
+      this.router.navigate(['shelves']);
     }
     this.store.dispatch(new ShelvesActions.StoreShelves());
-    this.onCancel();
   }
 
   onCancel() {

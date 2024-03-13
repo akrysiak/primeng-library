@@ -104,11 +104,12 @@ export class AuthorEditComponent implements OnInit {
         }
       });
       this.store.dispatch(new BooksActions.StoreBooks());
+      this.onCancel();
     } else {
       this.store.dispatch(new AuthorsActions.AddAuthor(newAuthor));
+      this.router.navigate(['authors']);
     }
     this.store.dispatch(new AuthorsActions.StoreAuthors());
-    this.onCancel();
   }
 
   onCancel() {

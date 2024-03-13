@@ -15,7 +15,6 @@ import * as BooksActions from '../books/book-store/book.actions';
 })
 export class ReadersComponent implements OnInit, OnDestroy {
   readers: Reader[] = [];
-  cols: any[] = [];
   id: number;
   selectedReader: Reader;
   subscription: Subscription;

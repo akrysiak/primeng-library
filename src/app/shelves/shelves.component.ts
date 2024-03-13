@@ -17,7 +17,6 @@ import copy from 'fast-copy';
 export class ShelvesComponent implements OnInit, OnDestroy {
   shelves: Shelf[] = [];
   books: Book[] = [];
-  cols: any[] = [];
   id: number;
   selectedShelf: Shelf;
   subscription: Subscription;
@@ -108,16 +107,10 @@ export class ShelvesComponent implements OnInit, OnDestroy {
   }
 
   onDelete() {
-    this.books.forEach((book) => {
-      if (book.shelf === this.selectedShelf) {
-        return;
-      } else {
-        this.store.dispatch(
-          new ShelvesActions.DeleteShelf(this.selectedShelf.id)
-        );
-        this.store.dispatch(new ShelvesActions.StoreShelves());
-      }
-    });
+    this.store.dispatch(new ShelvesActions.DeleteShelf(this.selectedShelf.id));
+    this.store.dispatch(new ShelvesActions.StoreShelves());
+    this.selectedShelf = null;
+    this.router.navigate(['shelves']);
   }
 
   ngOnDestroy(): void {

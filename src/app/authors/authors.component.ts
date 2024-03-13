@@ -19,7 +19,6 @@ export class AuthorsComponent implements OnInit {
     private store: Store<fromApp.AppState>
   ) {}
 
-  cols: any[] = [];
   authors: Author[] = [];
   selectedAuthor: Author;
   subscription: Subscription;

@@ -18,7 +18,6 @@ import copy from 'fast-copy';
 export class BooksComponent implements OnInit, OnDestroy {
   books: Book[] = [];
   readers: Reader[] = [];
-  cols: any[] = [];
   id: number;
   selectedBook: Book;
   subscription: Subscription;
